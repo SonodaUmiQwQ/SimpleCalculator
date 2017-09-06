@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,14 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.login_dialog, null));
+        View view=inflater.inflate(R.layout.login_dialog, null);
+        builder.setView(view);
         builder.setCancelable(false);
-        builder.show();
+        AlertDialog dialog = builder.show();
 
         setContentView(R.layout.activity_main);
 
 
-        BtnStart();
+        BtnStart(view, dialog);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void BtnStart(){
+    private void BtnStart(View view, final AlertDialog dialog){
         Button btnOne=(Button)findViewById(R.id.one);
         Button btnTwo=(Button)findViewById(R.id.two);
         Button btnThree=(Button)findViewById(R.id.three);
@@ -97,6 +99,33 @@ public class MainActivity extends AppCompatActivity {
         Button btnRight=(Button)findViewById(R.id.right);
         final TextView txtResult=(TextView)findViewById(R.id.textResult);
 
+        Button btnConfirm=(Button)view.findViewById(R.id.userComfirm);
+        Button btnExit=(Button)view.findViewById(R.id.userExit);
+        final EditText editUserName=view.findViewById(R.id.editTextUserId);
+        final EditText editPsw=view.findViewById(R.id.editTextPwd);
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editUserName.getText().toString().isEmpty() || editPsw.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "用户名或密码不能为空！", Toast.LENGTH_SHORT).show();
+                }
+                else if(editUserName.getText().toString().equals(getString(R.string.Username)) && editPsw.getText().toString().equals(getString(R.string.Password))) {
+                    dialog.cancel();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int id = android.os.Process.myPid();
+                if (id != 0) {
+                    android.os.Process.killProcess(id);
+                }
+            }
+        });
 
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override

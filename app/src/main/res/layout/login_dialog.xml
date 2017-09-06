@@ -26,12 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/confirm"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"/>
     <Button
         android:id="@+id/userExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/exitStr"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"/>
 
 </GridLayout>
