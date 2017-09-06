@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private float[] numbers;
     private int numbersTop;
 
-    MainActivity(){
+    public MainActivity(){
         operators = new char[100];
         operatorsTop = 0;
 
