@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:layout_gravity="center">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextUserId"
+        android:hint="@string/user_id"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextPwd"
+        android:hint="@string/password"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"/>
+
+    <Button
+        android:id="@+id/userComfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/userExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exitStr"
+        android:textSize="20sp"/>
+
+</GridLayout>
